@@ -14,6 +14,7 @@ async function list(req, res) {
 }
 
 async function read(req,res,next){
+    //check if movie with id exists
     console.log('movieId', req.params.movieId)
     const movies = await service.list();
     const foundMovie = movies.find((movie)=> {
@@ -27,6 +28,24 @@ async function read(req,res,next){
     next({status:404, message: "need a proper movieId"})
 
 }
+
+
+async function readTheatersWithMovieId(req, res, next) {
+    //check if movie with id exists
+    const movieId = req.params.movieId
+    const movies = await service.list();
+    const foundMovie = movies.find((movie)=> {
+        return movie.movie_id === Number(req.params.movieId);
+    })
+
+    if(foundMovie){
+        const theaters = await service.readTheatersWithMovieId(movieId)
+        res.json({data: theaters})
+    }
+    next({status: 404, message: "Movie cannot be found"})
+}
+
+
 // async function isShowing(req,res){
 //     const {isShowing} = req.body.data
 //     console.log('data', isShowing);
@@ -36,4 +55,5 @@ async function read(req,res,next){
 module.exports = {
     list: asyncErrorBoundary(list),
    read,
+    readTheatersWithMovieId
 }
