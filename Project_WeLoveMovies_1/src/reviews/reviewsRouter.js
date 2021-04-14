@@ -5,6 +5,8 @@ const cors = require("cors");
 
 //theaterRouter.use(cors());
 
+
+
 reviewsRouter
     .route("/")
     .get(controller.list).all(methodNotAllowed);
