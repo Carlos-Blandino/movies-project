@@ -9,7 +9,6 @@ moviesRouter
     .route("/").get(controller.list).all(methodNotAllowed);
 
 moviesRouter
-    .route("/:is_showing").get(controller.isShowing).all(methodNotAllowed);
-
+    .route("/:movieId").get(controller.read).all(methodNotAllowed);
 
 module.exports = moviesRouter;

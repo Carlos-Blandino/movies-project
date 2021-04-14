@@ -17,7 +17,16 @@ function isShowing(){
         .select("*")
         .where({is_showing: true}).distinctOn("title");
 }
+
+function read(id){
+    return knex("movies")
+        .select("*")
+        .where({movie_id: id})
+}
+
+
 module.exports = {
     list,
     isShowing,
+  read,
 }
