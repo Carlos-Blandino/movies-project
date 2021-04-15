@@ -35,13 +35,11 @@ async function list(req, res) {
 
 async function read(req,res,next){
     //check if movie with id exists
-    console.log('movieId', req.params.movieId)
     const movies = await service.list();
     const foundMovie = movies.find((movie)=> {
         return movie.movie_id === Number(req.params.movieId);
     })
     if(foundMovie){
-        console.log('found', foundMovie)
         res.json({data: foundMovie})
     }
 
