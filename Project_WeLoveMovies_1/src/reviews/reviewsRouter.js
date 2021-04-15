@@ -10,5 +10,11 @@ const cors = require("cors");
 reviewsRouter
     .route("/")
     .get(controller.list).all(methodNotAllowed);
+//
+// reviewsRouter
+//     .route("/:reviewId")
+//     .put(controller.update)
+//     .delete(controller.destroy)
+//     .all(methodNotAllowed);
 
 module.exports = reviewsRouter;

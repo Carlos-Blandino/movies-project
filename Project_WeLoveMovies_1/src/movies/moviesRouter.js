@@ -13,4 +13,8 @@ moviesRouter
 
 moviesRouter
     .route("/:movieId/theaters").get(controller.readTheatersWithMovieId).all(methodNotAllowed);
+
+moviesRouter
+    .route("/:movieId/reviews").get(controller.readReviewsWithMovieId).all(methodNotAllowed)
+
 module.exports = moviesRouter;

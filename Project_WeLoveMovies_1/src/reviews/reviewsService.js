@@ -4,6 +4,9 @@ function list(){
     return knex("reviews").select("*");
 
 }
+
+
 module.exports = {
     list,
 }
+

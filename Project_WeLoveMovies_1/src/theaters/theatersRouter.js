@@ -3,7 +3,7 @@ const controller = require("./theatersController");
 const methodNotAllowed = require("../errors/methodNotAllowed");
 const cors = require("cors");
 
-//theaterRouter.use(cors());
+theaterRouter.use(cors());
 theaterRouter
 .route("/").get(controller.list).all(methodNotAllowed);
 
