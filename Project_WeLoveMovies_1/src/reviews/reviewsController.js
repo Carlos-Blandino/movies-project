@@ -1,5 +1,6 @@
 const service = require("./reviewsService");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
+const timestamp = Date.now();
 
 async function list(req, res) {
     const data = await service.list();
@@ -19,15 +20,22 @@ async function update(req,res,next){
         //need body of request to insert as update
 
         const newReview = {
+
+            "content": content,
             "review_id":reviewId,
             "score": score,
-            "content": content,
             "critic_id": foundReview.critic_id,
         }
 
         const result = await service.update(newReview)
+        const stampedResult =
+            {
+                ...result,
+                created_at: timestamp.toString(),
+                updated_at: timestamp.toString()
+            }
 
-        res.json({data: result})
+        res.json({data: stampedResult})
     } else {
         next({status: 404, message: "Review cannot be found."});
     }

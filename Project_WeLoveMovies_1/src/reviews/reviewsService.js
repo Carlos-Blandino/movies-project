@@ -11,12 +11,14 @@ function read(id){
 }
 
 async function getTheCritic(critic_id) {
-    return await knex("critics").where({ critic_id }).first();
+    return knex("critics").where({ critic_id }).first();
 }
 
 async function addCritic(review) {
     const id = review.critic_id;
     review.critic = await getTheCritic(id);
+    review.critic.created_at = timestamp.toString();
+    review.critic.updated_at = timestamp.toString();
     return review;
 }
 
