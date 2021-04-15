@@ -61,6 +61,7 @@ function readReviewsWithMovieId(movieId){
         .join("critics", "critics.critic_id", "reviews.critic_id")
         .where("reviews.movie_id", movieId).then(results => results.map(addCritics));
 }
+
 module.exports = {
     list,
     isShowing,
