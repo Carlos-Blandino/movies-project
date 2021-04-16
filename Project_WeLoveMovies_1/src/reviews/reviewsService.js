@@ -1,5 +1,5 @@
 const knex = require("../db/connection");
-
+const timestamp = Date.now();
 function list(){
     return knex("reviews").select("*");
 }
@@ -10,7 +10,7 @@ function read(id){
         .where({review_id: id}).first();
 }
 
-async function getTheCritic(critic_id) {
+function getTheCritic(critic_id) {
     return knex("critics").where({ critic_id }).first();
 }
 
@@ -42,4 +42,3 @@ module.exports = {
     destroy,
     update,
 }
-

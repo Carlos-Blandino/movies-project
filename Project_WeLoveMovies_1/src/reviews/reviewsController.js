@@ -1,6 +1,6 @@
 const service = require("./reviewsService");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
-const timestamp = Date.now();
+const timestamp =  Date.now()
 
 async function list(req, res) {
     const data = await service.list();
@@ -42,6 +42,7 @@ async function update(req,res,next){
 }
 
 async function destroy(req,res,next){
+    //337 and 9999 are passed in as reviewId
     const { reviewId } = req.params;
 
     //reviewList is an array of objects
@@ -63,5 +64,3 @@ module.exports = {
     destroy,
     update
 }
-
-
