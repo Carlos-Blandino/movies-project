@@ -5,7 +5,6 @@ const cors = require("cors");
 
 reviewsRouter.use(cors());
 
-
 reviewsRouter
     .route("/")
     .get(controller.list).all(methodNotAllowed);

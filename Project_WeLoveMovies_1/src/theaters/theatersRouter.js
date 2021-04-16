@@ -5,6 +5,6 @@ const cors = require("cors");
 
 theaterRouter.use(cors());
 theaterRouter
-.route("/").get(controller.list).all(methodNotAllowed);
+    .route("/").get(controller.list).all(methodNotAllowed);
 
 module.exports = theaterRouter;
