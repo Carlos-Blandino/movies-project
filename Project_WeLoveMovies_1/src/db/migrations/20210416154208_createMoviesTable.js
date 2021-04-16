@@ -1,4 +1,3 @@
-
 exports.up = function(knex) {
     return knex.schema.createTable("movies", (table)=>{
         table.increments("movie_id").primary();
@@ -7,9 +6,9 @@ exports.up = function(knex) {
         table.string("rating");
         table.text("description");
         table.string("image_url");
+        table.timestamp(true,true)
     })
 };
-
 exports.down = function(knex) {
     return knex.schema.dropTable("movies");
 };
