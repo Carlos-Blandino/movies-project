@@ -1,7 +1,22 @@
 const knex = require("../db/connection");
-const timestamp = Date.now();
-function list(){
-    return knex("reviews").select("*");
+
+
+function list(movieId){
+    return knex('reviews')
+        .join("movies", "movies.movie_id", "reviews.movie_id")
+        .join("critics", "critics.critic_id", "reviews.critic_id")
+        .select("reviews.*")
+        .where("reviews.movie_id", movieId)
+        .then(reviews => {
+           return Promise.all( reviews.map((review) => addCritics(review)));
+        } );
+}
+
+async function addCritics(review){
+    review.critic = await knex("critics")
+        .where({"critics.critic_id": review.critic_id})
+        .first();
+    return review
 }
 
 function read(id){
@@ -10,25 +25,13 @@ function read(id){
         .where({review_id: id}).first();
 }
 
-function getTheCritic(critic_id) {
-    return knex("critics").where({ critic_id }).first();
-}
-
-async function addCritic(review) {
-    const id = review.critic_id;
-    review.critic = await getTheCritic(id);
-    review.critic.created_at = timestamp.toString();
-    review.critic.updated_at = timestamp.toString();
-    return review;
-}
 
 function update(review){
     const id = review.review_id;
     return knex("reviews")
         .where({review_id: id})
         .update(review, "*")
-        .then(()=> read(id))
-        .then(addCritic)
+        .then(() => Promise.resolve(addCritics(review)));
 }
 
 function destroy(reviewId){
@@ -41,4 +44,6 @@ module.exports = {
     list,
     destroy,
     update,
+    read
 }
+
