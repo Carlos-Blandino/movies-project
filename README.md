@@ -1,4 +1,4 @@
-# I Love Movies Project
+# We Love Movies Project
 
 ![Movie Billboard Page](movie-project)
 
