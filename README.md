@@ -3,7 +3,7 @@
 ![Movie Billboard Page](movie-project)
 
 I was designated as a backend developer in this capstone project.
-As another developer works on the design and frontend experience, I was tasked with setting up a database and building out specific routes so that users can gain access to data about movies, theaters, and reviews.
+As another developer worked on the design and frontend experience, I was tasked with setting up a database and building out specific routes so that users can gain access to data about movies, theaters, and reviews.
 
 To succeed at this project, I needed to demonstrate that I could do the following:
 
