@@ -2,7 +2,7 @@
 
 ![Movie Billboard Page](movie-project)
 
-I was designated as a backend developer in this capstone school project
+I was designated as a backend developer in this capstone project
 As another developer worked on and designed the frontend.
 
 To succeed at this project, I needed to demonstrate that I could do the following:
